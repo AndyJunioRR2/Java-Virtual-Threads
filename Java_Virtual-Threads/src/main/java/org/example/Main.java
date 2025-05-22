@@ -19,10 +19,12 @@ public class Main {
 
             for (String url : urls) {
                 URLProcessor processor = new URLProcessor(url);
-                Thread hilo = new Thread(processor);
+
+
+                Thread hilo = Thread.startVirtualThread(processor);
+
                 procesadores.add(processor);
                 hilos.add(hilo);
-                hilo.start();
             }
 
             for (Thread hilo : hilos) {
